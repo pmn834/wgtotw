@@ -1,0 +1,33 @@
+/**
+ * Style for forms
+ */
+label {
+  font-size: 1em;
+}
+
+input[type=text],
+input[type=password] {
+  font-size: 1.2em;
+  width: 500px;
+}
+
+input[type=submit],
+input[type=reset] {
+  font-size: 0.9em;
+}
+
+textarea {
+  font-size: 1.2em;
+  width: 500px;
+  min-height: 200px;
+}
+
+.buttons {
+  padding-top: 22px;
+  padding-bottom: 22px;
+} 
+
+fieldset {
+  margin: 0;
+  padding: 26px;
+}

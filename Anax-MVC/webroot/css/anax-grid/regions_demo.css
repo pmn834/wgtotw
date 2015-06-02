@@ -1,0 +1,25 @@
+#wrapper {
+    background-image: url(grid-1.png);
+}
+
+#flash,
+#main,
+#sidebar,
+#featured-1,
+#featured-2,
+#featured-3,
+#triptych-1,
+#triptych-2,
+#triptych-3,
+#footer-col-1,
+#footer-col-2,
+#footer-col-3, 
+#footer-col-4 {
+    background-color: #5989a5;
+    color: #fff;
+    font-weight: bold;
+    min-height: 66px;
+    text-align: center;
+    text-shadow: 0 0 2px #222;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,73 @@
+/**
+ * Based on http://dbwebb.se/coachen/en-navbar-med-drop-down-meny-i-ren-html-och-css
+ * Changed to only style li-items instead of a.
+ */
+
+.navbar {
+   font-family: @fontFamilyNavbar;
+   float: right;
+   margin-top: 1.5em;
+}
+ 
+.navbar ul {
+  list-style: none; 
+  margin: 0; 
+  padding: 0;
+}
+
+.navbar li {
+  background-color: #6699cc;
+  border: 1px solid #6f8ca8;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 20px;
+  padding: 0.3em;
+  position: relative;
+}
+
+.navbar a {
+  color: #f3f7fb;
+  display: block;
+  padding: 0.6em;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.navbar li:hover {
+  color: #fefefe; 
+} 
+
+.navbar li.selected-parent, 
+.navbar li.is-parent, 
+.navbar li.selected {
+}
+
+.navbar ul ul {
+  background-color: #fff; 
+  padding: 8px; 
+  position: absolute; 
+  left: -9999px; 
+  z-index: 2;
+}
+ 
+.navbar li li {
+  border-top: none;  
+}
+
+.navbar li:hover ul {
+  left: 0;
+}
+ 
+.navbar li li:hover {
+  color: #fefefe; 
+}
+
+.navbar li li.selected {
+  color: #22f; 
+}
+
+/* Just to sho off how class works */
+.navbar li .italic {
+  font-style: italic;
+}

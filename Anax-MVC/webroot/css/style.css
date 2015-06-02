@@ -1,0 +1,118 @@
+/**
+ * General elements
+ */
+@import url(figure.css);
+@import url(form.css);
+@import url(comments.css);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+html {
+    min-height:100%;
+    background: linear-gradient(0deg, #e2e2e2, #fff 80%) no-repeat;
+}
+
+body {
+  color: #333;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  overflow-y: scroll;
+  margin: 0;
+} 
+
+h1 {
+  font-size: 2.2em;
+}
+
+
+/**
+ * Layout of the main page elements 
+ */
+#wrapper {
+  margin: 0 auto;
+  width: 980px; 
+  padding: 0;
+  border-left: 1px solid #cbcbcb;
+  border-right: 1px solid #cbcbcb;
+  box-shadow: 0 0 18px #b2b2b2;
+  background-color: #fefefe;
+}
+
+
+/**
+ * Layout for header
+ */
+#header {
+  padding: 35px 20px 25px 48px;
+  position: relative;
+}
+
+.sitetitle {
+  color: #0b0b0b;
+  font-size: 32px;
+  font-weight: bold;
+  left: 273px;
+  position: absolute;
+  top: 32px;
+}
+
+.siteslogan {
+  color: #454545;
+  font-style: italic;
+  left: 273px;
+  position: absolute;
+  top: 69px;
+  font-size: 0.9em;
+}
+
+/**
+ * Layout for main
+ */
+#main {
+  margin: 50px;
+  min-height: 20em;
+}
+
+
+/**
+ * Layout for footer
+ */
+#footer {
+  background-color: #ebebeb;
+  border-top: 1px solid #d3d3d3;
+  margin-top: 40px;
+  padding-bottom: 15px;
+  padding-left: 44px;
+  padding-top: 15px;
+}
+
+.sitefooter {
+  color: #626262;
+  font-size: 0.8em;
+}
+
+
+/**
+ * For articles
+ */
+.article1 {
+  width: 700px;
+  padding-right: 1em;
+  margin-bottom: 40px;
+}
+
+.article1 h1,
+.article1 h2 {
+  border-bottom: 1px solid #ccc;
+}
+
+.byline {
+  margin-top: 44px;
+  border-top: 1px dashed #ccc;
+  padding-top: 22px;
+  color: #666;
+}
+
+.byline p {
+  margin-top: 0;
+  text-align: right;
+  font-size: 0.8em;
+}

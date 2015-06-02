@@ -1,0 +1,50 @@
+.flash_message {
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    margin: 1em 0;
+    padding: 1.5em;
+}
+
+.flash_message .fa {
+    margin-right: 0.8em;
+}
+
+.flash_info {
+    background-color: #cde6ee;
+    border: 1px solid #a7d2e1;
+    color: #2d5a6b;
+}
+
+.flash_info .fa {
+    color: #195266;
+}
+
+.flash_error {
+    background-color: #eecdcd;
+    border: 1px solid #e1a7a7;
+    color: #6b2d2d;
+}
+
+.flash_error .fa {
+    color: #ab4949;
+}
+
+.flash_success {
+    background-color: #cdeed1;
+    border: 1px solid #a7e1af;
+    color: #2d6b36;
+}
+
+.flash_success .fa{
+    color: #237f30;
+}
+
+.flash_warning {
+    background-color: #f5f7ba;
+    border: 1px solid #e2e74a;
+    color: #676b2d;
+}
+
+.flash_warning .fa {
+    color: #8b940e;
+}
