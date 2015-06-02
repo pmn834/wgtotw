@@ -41,9 +41,9 @@ The following external modules are included and subject to its own license.
 Setup
 -----------------------------------
 
-1. Locate the folder `wgtotw/Anax-MVC/app/config`.
+* Locate the folder `wgtotw/Anax-MVC/app/config`.
 
-2. Create a new file called `config_mysql.php` with the following content:
+* Create a new file called `config_mysql.php` with the following content:
 
 ```php
 <? php
@@ -57,6 +57,6 @@ Setup
 ```
 Substitute every occurrence of `REPLACE` with your own MySQL-settings and save these changes.
 
-3. Locate the folder `wgtotw/Anax-MVC/webroot/css`. The subfolder `anax-grid` will need changed access permissions, set these to 777 for the folder and all its content. 
+* Locate the folder `wgtotw/Anax-MVC/webroot/css`. The subfolder `anax-grid` will need changed access permissions, set these to 777 for the folder and all its content. 
 
-4. Open the file `setup.php` from `wgtotw/Anax-MVC/webroot/` in a web browser to start the automatic setup-process. Follow the on-screen instructions to finish the setup.
+* Open the file `setup.php` from `wgtotw/Anax-MVC/webroot/` in a web browser to start the automatic setup-process. Follow the on-screen instructions to finish the setup.
