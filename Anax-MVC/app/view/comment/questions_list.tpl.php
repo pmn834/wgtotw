@@ -7,7 +7,7 @@
         </div>
         <div class="q_tags">
             <?php foreach ($q[1] as $id => $tag) : ?>
-                <a href="<?=$this->url->create('')?>/question/tag/<?=$tag?>"><?=$tag?></a>
+                <a href="<?=$this->url->create('')?>/question/tag/<?=$tag['id']?>"><?=$tag['name']?></a>
             <?php endforeach; ?>
         </div>
         <div class='question_info'> 

@@ -10,7 +10,7 @@
         <div class="q_tags">
             <?php if (!empty($presentation[1][0])) : ?>
                 <?php foreach ($presentation[1] as $id => $tag) : ?>
-                    <a href="<?=$this->url->create('')?>/question/tag/<?=$tag?>"><?=$tag?></a>
+                    <a href="<?=$this->url->create('')?>/question/tag/<?=$tag['id']?>"><?=$tag['name']?></a>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
@@ -18,4 +18,3 @@
     </div>
 </div>
 <hr class='comments_hr' />
-

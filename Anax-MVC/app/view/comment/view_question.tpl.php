@@ -9,7 +9,7 @@
         </div>
         <div class="q_tags">
             <?php foreach ($presentation['tags'] as $id => $tag) : ?>
-                <a href="<?=$this->url->create('')?>/question/tag/<?=$tag?>"><?=$tag?></a>
+                <a href="<?=$this->url->create('')?>/question/tag/<?=$tag['id']?>"><?=$tag['name']?></a>
             <?php endforeach; ?>
         </div>
         <?php $upd = is_null($presentation['question']['updated']) ? null : "<span style='font-size: 0.8em; color: #888'>Uppdaterad: " . date("j M Y, H:i", strtotime($presentation['question']['updated'])) . "</span>"; echo $upd; ?>

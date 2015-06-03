@@ -43,7 +43,12 @@ class QuestionController implements \Anax\DI\IInjectionAware
             $question = json_decode(json_encode($comment),TRUE);
             $tags = $question['tags'];
             $tagsSep = explode(",", $tags);
-            $questions[] = array($question, $tagsSep);
+            $tagIdName = array();
+            foreach ($tagsSep as $key => $val) {
+                $tag_id = $this->getTagIdAction($val);
+                $tagIdName[] = array('id' => $tag_id, 'name' => $val);
+            }
+            $questions[] = array($question, $tagIdName);
         }
 
         $this->views->add('comment/questions_list', [
@@ -120,8 +125,14 @@ class QuestionController implements \Anax\DI\IInjectionAware
         $question = json_decode(json_encode($all[0]),TRUE);
         $tags = $question['tags'];
         $tagsSep = explode(",", $tags);
+        $tagIdName = array();
+        
+        foreach ($tagsSep as $key => $val) {
+            $tag_id = $this->getTagIdAction($val);
+            $tagIdName[] = array('id' => $tag_id, 'name' => $val);
+        }
 
-        $question_data = array($question, $tagsSep);
+        $question_data = array($question, $tagIdName);
 
         return $question_data;
     }
@@ -151,10 +162,16 @@ class QuestionController implements \Anax\DI\IInjectionAware
         // Separate the defined tags for this question.
         $tags = $question[0]['tags'];
         $tagsSep = explode(",", $tags);
+        $tagIdName = array();
+        
+        foreach ($tagsSep as $key => $val) {
+            $tag_id = $this->getTagIdAction($val);
+            $tagIdName[] = array('id' => $tag_id, 'name' => $val);
+        }
 
         // Store question to presentation array
         $presentation['question'] = $question[0];
-        $presentation['tags'] = $tagsSep;
+        $presentation['tags'] = $tagIdName;
  
         // Get the answers
         $qry = "SELECT * FROM mvc_VQuestion
@@ -252,9 +269,8 @@ class QuestionController implements \Anax\DI\IInjectionAware
                 foreach ($tagsSep as $key => $val) {
                     if (!$this->tagExistAction($val)) {
                         $trimmed = trim($val);
-                        $cleantag = str_replace(" ", "_", $trimmed);
                         $sql = "INSERT INTO mvc_tag (name) VALUES (?)";
-                        $res = $this->db->executeFetchAll($sql,array($cleantag));
+                        $res = $this->db->executeFetchAll($sql,array($trimmed));
                         $tagId = $this->db->lastInsertId();
                     }
                     else {
@@ -605,6 +621,39 @@ class QuestionController implements \Anax\DI\IInjectionAware
     }
     
     /**
+     * Get all questions with a specific tag Id
+     *
+     * @param $tag the tag Id to search for
+     * 
+     * @return array with the results
+     */
+    public function questionsByTagIdAction($tagid=null)
+    {
+
+        $sql = "SELECT * FROM mvc_tag WHERE id='" . $tagid . "'";
+        $all = $this->db->executeFetchAll($sql);
+        
+        if ($all) {
+            $tag_info = json_decode(json_encode($all[0]),TRUE);
+    
+            $sql = "SELECT idQuestion FROM mvc_tag2question WHERE idTag='" . $tag_info['id'] . "'";
+            $all = $this->db->executeFetchAll($sql);
+            $all = json_decode(json_encode($all),TRUE);
+            $questions = array();
+            foreach ($all as $key => $val) {
+                $qid = $val['idQuestion'];
+                $questions[] = $this->getQuestionById($qid);
+            }
+        }
+        
+        $res = array();
+        $res['tag_info'] = $tag_info;
+        $res['questions'] = $questions;
+        
+        return $res;
+    }
+
+    /**
      * Get the id of a tag
      *
      * @param $tag the tag to search for
@@ -649,16 +698,16 @@ class QuestionController implements \Anax\DI\IInjectionAware
     }
     
     /**
-     * Output all questions with a specific tag.
+     * Output all questions with a specific tag id.
      *
      * @return void
      */
-    public function tagAction($tag=null)
+    public function tagAction($tagid=null)
     {
-        $questions = $this->questionsByTagAction($tag);
+        $questions = $this->questionsByTagIdAction($tagid);
         
         $this->views->add('comment/questions_by_tag', [
-            'title' => "Frågor med taggen: " . $tag,
+            'title' => "Frågor med taggen: " . $questions['tag_info']['name'],
             'questions' => $questions
         ]);
 
