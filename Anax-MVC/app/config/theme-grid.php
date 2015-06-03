@@ -27,7 +27,7 @@ return [
             'template' => 'wgtotw/header',
             'data'     => [
                 'siteTitle' => "PortableQnA",
-                'siteTagline' => "Diskutera portabel programvara",
+                'siteTagline' => "Portabel programvara hos WGTOTW",
             ], 
             'sort'     => -1
         ],

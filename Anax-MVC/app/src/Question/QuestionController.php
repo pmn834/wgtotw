@@ -251,8 +251,10 @@ class QuestionController implements \Anax\DI\IInjectionAware
                 $tagsSep = explode(",", strtolower($form->Value('tags')));
                 foreach ($tagsSep as $key => $val) {
                     if (!$this->tagExistAction($val)) {
+                        $trimmed = trim($val);
+                        $cleantag = str_replace(" ", "_", $trimmed);
                         $sql = "INSERT INTO mvc_tag (name) VALUES (?)";
-                        $res = $this->db->executeFetchAll($sql,array(trim($val)));
+                        $res = $this->db->executeFetchAll($sql,array($cleantag));
                         $tagId = $this->db->lastInsertId();
                     }
                     else {
