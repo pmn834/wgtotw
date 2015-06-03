@@ -193,11 +193,7 @@ class QuestionController implements \Anax\DI\IInjectionAware
         $this->views->add('comment/view_question', [
             'presentation' => $presentation,
         ]);
-        
-        if($this->UserauthenticationController->isAuthenticated()) {
-            $this->addAnswerAction($qid, $presentation['question']['title']);
-        }
-        
+
     }
 
     /**
@@ -321,20 +317,28 @@ class QuestionController implements \Anax\DI\IInjectionAware
             // What to do if the form was submitted
             if($status === true) {
                 
+                 $post = $this->getQuestionById($qid);
+                 $qt = $post[0]['title'];
+                
                  $now = gmdate('Y-m-d H:i:s');
                 
                  $sql = "INSERT INTO mvc_comments (commentTypeId, questionId, title, userId, userAcronym, userEmail, text, created) VALUES ('2', '" . $qid . "','" . $qt . "','" . $_SESSION['user']->id . "', '" . $_SESSION['user']->acronym . "', '" . $_SESSION['user']->email . "', '" . $form->Value('text') . "', '" . $now . "')";
                 $res = $this->db->executeFetchAll($sql);
-                var_dump($res);
                 $qw = '/question/view/' . $qid;
                 $url = $this->url->create('') . $qw;
-               $this->response->redirect($url);
+                $this->response->redirect($url);
             }
             
             // What to do when form could not be processed
             else if($status === false){
               header("Location: " . $_SERVER['PHP_SELF']);
             }
+            
+            $post = $this->getQuestionById($qid);
+            
+            $this->views->add('comment/view_single_post', [
+                'presentation' => $post
+            ]);
 
             $this->views->add('comment/form', [
                 'title' => "Publicera ett svar",

@@ -14,6 +14,11 @@
         </div>
         <?php $upd = is_null($presentation['question']['updated']) ? null : "<span style='font-size: 0.8em; color: #888'>Uppdaterad: " . date("j M Y, H:i", strtotime($presentation['question']['updated'])) . "</span>"; echo $upd; ?>
     </div>
+    
+    <?php if($this->UserauthenticationController->isAuthenticated()) : ?>
+            <p class='post_edit_link' style='margin: 0 0 1em 0; width:160px; text-align:center; padding: 1em; float:right'><a href='<?=$this->url->create('')?>/question/addAnswer/<?=$presentation['question']['id']?>'>Besvara denna fråga</a></p>
+    <?php endif ?>
+    
     <div class='answers'>
         <p class='answer_count'><?=count($presentation['answers'])?> svar</p>
         <hr class='comments_hr' />
@@ -62,4 +67,3 @@
         <?php endforeach; ?>
     </div>
 </div> 
-
