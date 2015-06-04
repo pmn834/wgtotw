@@ -1,4 +1,4 @@
-Om PortableQnA
+Om WGTOTW
 ==========================
 
 Målet med webbplatsen är att tillhandahålla en plattform där användare kan diskutera frågor kring portabel programvara. Via webbplatsen har registrerade användare möjlighet att ställa frågor, besvara andra personers frågor samt ge kommentarer på dessa frågor och svar.

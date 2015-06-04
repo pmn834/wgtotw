@@ -8,7 +8,7 @@
 require __DIR__.'/config_db-driven-app.php'; 
 
 // Set the title of the page
-$app->theme->setVariable('title', "PortableQnA");
+$app->theme->setVariable('title', "WGTOTW");
 
 // Use clean links
 $app->url->setUrlType(\Anax\Url\CUrl::URL_CLEAN);

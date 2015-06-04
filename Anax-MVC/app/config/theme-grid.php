@@ -26,8 +26,8 @@ return [
             'region'   => 'header', 
             'template' => 'wgtotw/header',
             'data'     => [
-                'siteTitle' => "PortableQnA",
-                'siteTagline' => "Portabel programvara hos WGTOTW",
+                'siteTitle' => "WGTOTW",
+                'siteTagline' => "Diskutera portabel programvara",
             ], 
             'sort'     => -1
         ],
@@ -68,7 +68,7 @@ return [
         'lang' => 'sv',
 
         // Append this value to each <title>
-        'title_append' => ' | PortableQnA',
+        'title_append' => ' | WGTOTW',
 
         // Stylesheets
         //'stylesheets' => ['css/style.css', 'css/navbar_me.css'],
@@ -93,4 +93,3 @@ return [
         'google_analytics' => null,
     ],
 ];
-

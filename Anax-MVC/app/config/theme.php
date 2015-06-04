@@ -35,7 +35,7 @@ return [
         'lang' => 'sv',
 
         // Append this value to each <title>
-        'title_append' => ' | PortableQnA',
+        'title_append' => ' | WGTOTW',
 
         // Stylesheets
         'stylesheets' => ['css/style.css'],
