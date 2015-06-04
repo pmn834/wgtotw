@@ -124,12 +124,15 @@ class QuestionController implements \Anax\DI\IInjectionAware
 
         $question = json_decode(json_encode($all[0]),TRUE);
         $tags = $question['tags'];
-        $tagsSep = explode(",", $tags);
         $tagIdName = array();
         
-        foreach ($tagsSep as $key => $val) {
-            $tag_id = $this->getTagIdAction($val);
-            $tagIdName[] = array('id' => $tag_id, 'name' => $val);
+        if (!empty($tags)) {
+            $tagsSep = explode(",", $tags);
+        
+            foreach ($tagsSep as $key => $val) {
+                $tag_id = $this->getTagIdAction($val);
+                $tagIdName[] = array('id' => $tag_id, 'name' => $val);
+            }
         }
 
         $question_data = array($question, $tagIdName);

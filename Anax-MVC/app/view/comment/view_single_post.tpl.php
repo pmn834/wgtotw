@@ -8,7 +8,7 @@
             <?=date("j M Y, H:i", strtotime($presentation[0]['created']))?></div>
         </div>
         <div class="q_tags">
-            <?php if (!empty($presentation[1][0])) : ?>
+            <?php if (!empty($presentation[1])) : ?>
                 <?php foreach ($presentation[1] as $id => $tag) : ?>
                     <a href="<?=$this->url->create('')?>/question/tag/<?=$tag['id']?>"><?=$tag['name']?></a>
                 <?php endforeach; ?>

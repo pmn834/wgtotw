@@ -135,18 +135,20 @@ class UserController implements \Anax\DI\IInjectionAware
             
             header("Location: " . $_SERVER['PHP_SELF']);
             $now = gmdate('Y-m-d H:i:s');
-     
-            $this->users->save([
-                'acronym' => $form->Value('acronym'),
-                'email' => $form->Value('email'),
-                'name' => $form->Value('name'),
-                'password' => password_hash($form->Value('name'), PASSWORD_DEFAULT),
-                'created' => $now,
-                'active' => $now,
-            ]);
+            
+            if(!$this->userExistsAction($form->Value('acronym'))) {
+                $this->users->save([
+                    'acronym' => $form->Value('acronym'),
+                    'email' => $form->Value('email'),
+                    'name' => $form->Value('name'),
+                    'password' => password_hash($form->Value('name'), PASSWORD_DEFAULT),
+                    'created' => $now,
+                    'active' => $now,
+                ]);
          
-            $url = $this->url->create('users/id/' . $this->users->id);
-            $this->response->redirect($url);
+                $url = $this->url->create('users/id/' . $this->users->id);
+                $this->response->redirect($url);
+            }
         }
         
         // What to do when form could not be processed
@@ -162,6 +164,21 @@ class UserController implements \Anax\DI\IInjectionAware
         ]);
         
     }
+    
+    
+    public function userExistsAction($acronym) {
+
+        $qry = "SELECT * FROM mvc_user
+                WHERE acronym=?";
+        $all = $this->db->executeFetchAll($qry,array($acronym));
+        if ($all) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     
     /**
      * Delete user.
@@ -528,5 +545,4 @@ class UserController implements \Anax\DI\IInjectionAware
         
         return $html;
     }
-    
 }
